@@ -1,0 +1,35 @@
+{
+  "name": "puppeteer-batch-screenshots",
+  "version": "1.0.0",
+  "description": "Make screenshots of your websites in batch",
+  "main": "index.js",
+  "bin": {
+    "puppeteer-batch-screenshots": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "chrome-cookies-secure": "^1.2.0",
+    "fs-extra": "^7.0.1",
+    "puppeteer": "^1.10.0"
+  },
+  "keywords": [
+    "screenshot",
+    "emulation",
+    "mobile",
+    "puppeteer",
+    "headless",
+    "chrome"
+  ],
+  "author": "Alexey Udivankin <allx@mail.ru>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udivankin/puppeteer-batch-screenshots.git"
+  },
+  "bugs": {
+    "url": "https://github.com/udivankin/puppeteer-batch-screenshots/issues"
+  },
+  "homepage": "https://github.com/udivankin/puppeteer-batch-screenshots#readme"
+}
