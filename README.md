@@ -19,7 +19,7 @@ puppeteer-batch-screenshots config.json
 
 <h3>Example config: </h3>
 
-```json
+```js
 [
   {
     "width": 1440,  // Viewport width, defaults to 1280
