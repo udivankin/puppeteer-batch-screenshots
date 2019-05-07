@@ -1,20 +1,32 @@
 [
   {
-    "width": 1440,
-    "height": 900,
-    "emulate": null,
-    "auth" : null,
-    "waitFor": null,
-    "waitForSelector": null,
-    "element": null,
+    "emulate": "Nexus 4",
+    "waitFor": 500,
+    "element": "body > div",
+    "fullPage": false,
     "routes": [
       {
         "url": "http://example.com/1",
-        "output": "./screenshots/example-1-${new Date().toISOString()}-1.png"
+        "output": "./screenshots/example-1-${new Date().toISOString()}-1.jpeg"
       },
       {
         "url": "http://example.com/2",
         "output": "./screenshots/example-1-${new Date().toISOString()}-2.png"
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "waitFor": 1000,
+    "fullPage": true,
+    "routes": [
+      {
+        "url": "http://example.com/1",
+        "output": "./screenshots/example-1-${new Date().toISOString()}-3.pdf"
+      },
+      {
+        "url": "http://example.com/2",
+        "output": "./screenshots/example-1-${new Date().toISOString()}-4.jpg"
       }
     ]
   }

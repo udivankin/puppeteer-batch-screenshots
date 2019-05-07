@@ -27,7 +27,6 @@ const DEFAULT_HEIGHT = 800;
         emulate,
         auth,
         waitFor,
-        waitForSelector,
         element,
         routes,
       } = task;
@@ -48,6 +47,11 @@ const DEFAULT_HEIGHT = 800;
         const outputPath = eval('`' + output + '`');
 
         try {
+          if (!/\.pdf|\.jpg|\.jpeg|\.png$/.test(outputPath)) {
+            console.warn(`Warning: output format for ${output} is not supported`);
+            continue;
+          }
+
           if (auth) {
             const [username, password] = auth.split(';');
             await page.authenticate({ username, password });
@@ -56,25 +60,35 @@ const DEFAULT_HEIGHT = 800;
           await page.goto(url);
   
           if (waitFor) {
-            await page.waitFor(waitFor);
-          }
-  
-          if (waitForSelector) {
-            await page.waitForSelector(waitForSelector);
+            if (typeof waitFor === 'number') {
+              await page.waitFor(waitFor);
+            } else if (typeof waitFor === 'string') {
+              await page.waitForSelector(waitFor);
+            } else {
+              console.warn(`Warning: invalid waitFor value ${waitFor}`);
+            }
           }
   
           await fs.ensureDir(path.dirname(path.resolve(outputPath)));
 
           if (element) {
             const el = await page.$(element);
-            await el.screenshot({ path: path.resolve(outputPath) });
+            if (/\.pdf$/.test(outputPath)) {
+              console.warn('Warning: taking element screenshot in PDF not supported');
+            } else {
+              await el.screenshot({ path: path.resolve(outputPath) });
+            }
           } else {
-            await page.screenshot({ path: path.resolve(outputPath), fullPage });
+            if (/\.pdf$/.test(outputPath)) {
+              await page.pdf({ path: path.resolve(outputPath) });
+            } else {
+              await page.screenshot({ path: path.resolve(outputPath), fullPage });
+            }
           }
   
           console.log(`Saved ${url} screenshot to ${outputPath}`);
         } catch(e) {
-          console.error(`Failed to make ${url} screenshot to ${outputPath}`);
+          console.error(`Failed to save ${url} screenshot to ${outputPath}`, e);
         }
       }
     }

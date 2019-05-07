@@ -1,6 +1,6 @@
 {
   "name": "puppeteer-batch-screenshots",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Make screenshots of your websites in batch",
   "main": "index.js",
   "bin": {
