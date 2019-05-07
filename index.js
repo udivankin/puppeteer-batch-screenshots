@@ -6,8 +6,8 @@ const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
 const configPath = process.argv.pop();
 
-if (!configPath) {
-  console.error('Error: config path is required');
+if (!configPath || !fs.existsSync(path.resolve(configPath))) {
+  console.error('Error: config not provided');
   process.exit(1);
 }
 

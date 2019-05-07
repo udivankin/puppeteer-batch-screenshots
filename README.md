@@ -8,15 +8,20 @@
 
 <p>Tool based on <a href="https://github.com/GoogleChrome/puppeteer">puppeteer</a>.</p>
 
-<h4>Installation</h4>
+<h3>Installation and Usage:</h3>
 
 ```shell
 npm i -g puppeteer-batch-screenshots
+puppeteer-batch-screenshots config.json
 ```
-<h3>Usage:</h3>
+
+alternatively you can install it as a local dependency
 
 ```shell
-puppeteer-batch-screenshots config.json
+mkdir my-perfect-screenshoot-tool && cd my-perfect-screenshoot-tool
+npm init -y
+npm i puppeteer-batch-screenshots
+node /node_modules/puppeteer-batch-screenshots/index.js config.json
 ```
 
 <h3>Example config: </h3>
@@ -24,17 +29,29 @@ puppeteer-batch-screenshots config.json
 ```js
 [ // You can put multiple tasks here, each carrying custom settings
   {
-    "width": 1440,  // Viewport width, defaults to 1280
-    "height": 900,  // Viewport height, defaults to 800
-    "fullPage": false, // Whether it shoud make screenshot of the whole page content
-    "emulate": "Nexus 4",  // Device to emulate, see full list in https://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js
-    "auth" : "username;password", // Auth username and password for HTTP basic auth
-    "waitFor": 500, // Number in ms to wait for, or alternatively CSS selector (e.g. ".footer") to wait to appear
-    "element": "#main", // CSS selector of element to take screenshot of
-    "routes": [ // Each task can have multiple routes to make screenshots of
+    // Viewport width, defaults to 1280
+    "width": 1440,
+    // Viewport height, defaults to 800
+    "height": 900,
+    // Whether it shoud make screenshot of the whole page content
+    "fullPage": false,
+    // Device to emulate, see full list at
+    // https://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js
+    "emulate": "Nexus 4",
+    // Auth username and password for HTTP basic auth
+    "auth" : "username;password",
+    // Number in ms to wait for, or alternatively CSS selector (e.g. ".footer") to wait to appear
+    "waitFor": 500,
+    // CSS selector of element to take screenshot of
+    "element": "#main",
+    // Each task can have multiple routes
+    "routes": [ 
       {
+        // Web page URL
         "url": "http://example.com/1",
-        "output": "./screenshots/example-1-${new Date().toISOString()}.png" // Output field is being evaluated to enable template literals w/js code. Supported file extensions: PNG, JPEG/JPG and PDF
+        // Output field is being evaluated to enable template literals
+        // Supported file extensions: PNG, JPEG/JPG and PDF
+        "output": "./screenshots/example-1-${new Date().toISOString()}.png" 
       }
     ]
   }
