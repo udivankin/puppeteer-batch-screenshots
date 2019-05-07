@@ -21,7 +21,7 @@ alternatively you can install it as a local dependency
 mkdir my-perfect-screenshoot-tool && cd my-perfect-screenshoot-tool
 npm init -y
 npm i puppeteer-batch-screenshots
-node /node_modules/puppeteer-batch-screenshots/index.js config.json
+node ./node_modules/puppeteer-batch-screenshots/index.js config.json
 ```
 
 <h3>Example config: </h3>
