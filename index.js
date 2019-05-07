@@ -1,8 +1,17 @@
-const fs = require('fs-extra')
+#!/usr/bin/env node
+
+const fs = require('fs-extra');
 const path = require('path');
 const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
-const tasks = require(path.resolve(process.argv.pop()));
+const configPath = process.argv.pop();
+
+if (!configPath) {
+  console.error('Error: config path is required');
+  process.exit(1);
+}
+
+const tasks = require(path.resolve(configPath));
 
 const DEFAULT_WIDTH = 1280;
 const DEFAULT_HEIGHT = 800;
@@ -44,7 +53,7 @@ const DEFAULT_HEIGHT = 800;
 
       for (const route of routes) {
         const { url, output } = route;
-        const outputPath = eval('`' + output + '`');
+        const outputPath = eval('\`' + output + '`');
 
         try {
           if (!/\.pdf|\.jpg|\.jpeg|\.png$/.test(outputPath)) {

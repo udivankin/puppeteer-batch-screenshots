@@ -1,6 +1,6 @@
 {
   "name": "puppeteer-batch-screenshots",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Make screenshots of your websites in batch",
   "main": "index.js",
   "bin": {
@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/udivankin/puppeteer-batch-screenshots/issues"
   },
-  "homepage": "https://github.com/udivankin/puppeteer-batch-screenshots#readme"
+  "homepage": "https://github.com/udivankin/puppeteer-batch-screenshots#readme",
+  "engines": {
+    "node": "^8.10.0 || ^10.13.0 || >=11.10.1"
+  }
 }
