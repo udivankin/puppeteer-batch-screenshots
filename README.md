@@ -27,35 +27,38 @@ node ./node_modules/puppeteer-batch-screenshots/index.js config.json
 <h3>Example config: </h3>
 
 ```js
-[ // You can put multiple tasks here, each carrying custom settings
+[
+  // You can put multiple tasks here, each carrying custom settings
   {
     // Viewport width, defaults to 1280
-    "width": 1440,
+    width: 1440,
     // Viewport height, defaults to 800
-    "height": 900,
+    height: 900,
     // Whether it shoud make screenshot of the whole page content
-    "fullPage": false,
+    fullPage: false,
     // Device to emulate, see full list at
-    // https://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js
-    "emulate": "Nexus 4",
+    // https://pptr.dev/next/api/puppeteer.knowndevices
+    emulate: 'iPhone 13 Pro Max landscape',
     // Auth username and password for HTTP basic auth
-    "auth" : "username;password",
-    // Number in ms to wait for, or alternatively CSS selector (e.g. ".footer") to wait to appear
-    "waitFor": 500,
+    auth: 'username;password',
+    // Number in ms to wait for
+    waitForTimeout: 500,
+    // Or alternatively CSS selector (e.g. ".footer") to wait to appear
+    waitForSelector: 'body',
     // CSS selector of element to take screenshot of
-    "element": "#main",
+    element: '#main',
     // Each task can have multiple routes
-    "routes": [ 
+    routes: [
       {
         // Web page URL
-        "url": "http://example.com/1",
+        url: 'http://example.com/1',
         // Output field is being evaluated to enable template literals
         // Supported file extensions: PNG, JPEG/JPG and PDF
-        "output": "./screenshots/example-1-${new Date().toISOString()}.png" 
-      }
-    ]
-  }
-]
+        output: './screenshots/example-1-${new Date().toISOString()}.png',
+      },
+    ],
+  },
+];
 ```
 
 <h3>License</h3>

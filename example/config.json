@@ -1,7 +1,7 @@
 [
   {
-    "emulate": "Nexus 4",
-    "waitFor": 500,
+    "emulate": "iPhone 13 Pro Max landscape",
+    "waitForTimeout": 1000,
     "element": "body > div",
     "fullPage": false,
     "routes": [
@@ -17,7 +17,7 @@
   },
   {
     "width": 1440,
-    "waitFor": 1000,
+    "waitForSelector": "body",
     "fullPage": true,
     "routes": [
       {
